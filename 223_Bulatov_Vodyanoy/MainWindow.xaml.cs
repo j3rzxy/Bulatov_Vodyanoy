@@ -24,5 +24,18 @@ namespace _223_Bulatov_Vodyanoy
         {
             InitializeComponent();
         }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            TB1.Clear();
+            TB2.Clear();
+            TB3.Clear();
+            TB4.Clear();
+        }
+
+        private void Count_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
