@@ -4,21 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_223_Bulatov_Vodyanoy"
+        xmlns:charts="clr- namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
         mc:Ignorable="d"
         Title="Практическая работа №4 Булатов Водяной" Height="450" Width="800">
     <Grid RenderTransformOrigin="0.507,0.511">
+        <Frame Content="Frame"/>
         <Image Margin="191,105,135,240" Source="/Аннотация 2026-02-24 094352.png" Stretch="Fill"/>
-        <TextBox x:Name="TB1" HorizontalAlignment="Left" Margin="284,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
-        <TextBox x:Name="TB2" HorizontalAlignment="Left" Margin="284,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
-        <TextBox x:Name="TB3" HorizontalAlignment="Left" Margin="284,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
-        <TextBox x:Name="TB4" HorizontalAlignment="Left" Margin="284,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" IsReadOnly="True"/>
+        <TextBox x:Name="TBX" ToolTip="Введите переменную x" HorizontalAlignment="Left" Margin="284,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="TBY" ToolTip="Введите переменную y" HorizontalAlignment="Left" Margin="284,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="TBZ" ToolTip="Введите переменную z" HorizontalAlignment="Left" Margin="284,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="TBResult" ToolTip="Результат вычислений" HorizontalAlignment="Left" Margin="284,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" IsReadOnly="True"/>
         <Label Content="x" HorizontalAlignment="Left" Margin="263,213,0,0" VerticalAlignment="Top"/>
         <Label Content="y" HorizontalAlignment="Left" Margin="263,236,0,0" VerticalAlignment="Top"/>
         <Label Content="z" HorizontalAlignment="Left" Margin="263,259,0,0" VerticalAlignment="Top"/>
         <Label Content="Ответ:" HorizontalAlignment="Left" Margin="237,280,0,0" VerticalAlignment="Top" Height="30"/>
-        <Button Content="Очистить" HorizontalAlignment="Left" Margin="393,282,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Clear_Click"/>
-        <Button Content="Вычислить" HorizontalAlignment="Left" Margin="393,213,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Count_Click"/>
-
+        <Button Content="Очистить" ToolTip="Очистить текстовые поля с данными" HorizontalAlignment="Left" Margin="393,282,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Clear_Click"/>
+        <Button Content="Вычислить" ToolTip="Вычислить выражение на основе введеных параметров" HorizontalAlignment="Left" Margin="393,213,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Count_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="55,10,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
 
     </Grid>
 </Window>
