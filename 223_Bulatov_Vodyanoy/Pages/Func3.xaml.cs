@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _223_Bulatov_Vodyanoy
+namespace _223_Bulatov_Vodyanoy.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Func2.xaml
+    /// Логика взаимодействия для Func3.xaml
     /// </summary>
-    public partial class Func2 : Page
+    public partial class Func3 : Page
     {
-        public Func2()
+        public Func3()
         {
             InitializeComponent();
         }
