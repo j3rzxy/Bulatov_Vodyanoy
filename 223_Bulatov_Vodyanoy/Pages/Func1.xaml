@@ -17,8 +17,8 @@
         <Label Content="x" HorizontalAlignment="Left" Margin="263,213,0,0" VerticalAlignment="Top"/>
         <Label Content="y" HorizontalAlignment="Left" Margin="263,236,0,0" VerticalAlignment="Top"/>
         <Label Content="z" HorizontalAlignment="Left" Margin="263,259,0,0" VerticalAlignment="Top"/>
-        <Label Content="Ответ:" HorizontalAlignment="Left" Margin="237,280,0,0" VerticalAlignment="Top" Height="30"/>
-        <Button Content="Очистить" ToolTip="Очистить текстовые поля с данными" HorizontalAlignment="Left" Margin="393,282,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Clear_Click"/>
+        <Label Content="Ответ" HorizontalAlignment="Left" Margin="237,280,0,0" VerticalAlignment="Top" Height="30"/>
+        <Button Content="Очистить" ToolTip="Очистить все текстовые поля с данными" HorizontalAlignment="Left" Margin="393,282,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Clear_Click"/>
         <Button Content="Вычислить" ToolTip="Вычислить выражение на основе введеных параметров" HorizontalAlignment="Left" Margin="393,213,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Count_Click"/>
     </Grid>
 </Page>

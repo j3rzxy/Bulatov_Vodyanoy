@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace _223_Bulatov_Vodyanoy.Pages
 {
@@ -23,6 +24,16 @@ namespace _223_Bulatov_Vodyanoy.Pages
         public Func3()
         {
             InitializeComponent();
+        }
+
+        private void Count_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
