@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_223_Bulatov_Vodyanoy"
+        Closing="Window_Closing"
         Title="Практическая работа №4 Булатов Водяной" Height="650" Width="800">
     <Grid>
         <Grid.RowDefinitions>
