@@ -40,6 +40,8 @@ namespace _223_Bulatov_Vodyanoy.Pages
 
             try
             {
+                TBResult.Clear();
+
                 if (string.IsNullOrWhiteSpace(TBX.Text))
                 {
                     throw new ArgumentException("Заполните поле X!");
