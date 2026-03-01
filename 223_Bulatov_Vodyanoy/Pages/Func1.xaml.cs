@@ -38,77 +38,83 @@ namespace _223_Bulatov_Vodyanoy.Pages
 
             double x, y, z;
 
-            if (string.IsNullOrWhiteSpace(TBX.Text))
+            try
             {
-                MessageBox.Show("Заполните поле X!");
-                TBX.Focus();
+                if (string.IsNullOrWhiteSpace(TBX.Text))
+                {
+                    throw new ArgumentException("Заполните поле X!");
+                }
+
+                TBX.Text = TBX.Text.Replace('.', ',');
+
+                if (!double.TryParse(TBX.Text, out x))
+                {
+                    throw new FormatException("Поле X должно содержать число!");
+                }
+                if (string.IsNullOrWhiteSpace(TBY.Text))
+                {
+                    throw new ArgumentException("Заполните поле Y!");
+                }
+
+                TBX.Text = TBX.Text.Replace('.', ',');
+
+
+                if (!double.TryParse(TBY.Text, out y))
+                {
+                    throw new FormatException("Поле Y должно содержать число!");
+                }
+                if (string.IsNullOrWhiteSpace(TBZ.Text))
+                {
+                    throw new ArgumentException("Заполните поле Z!");
+                }
+
+                TBX.Text = TBX.Text.Replace('.', ',');
+
+                if (!double.TryParse(TBZ.Text, out z))
+                {
+                    throw new FormatException("Поле Z должно содержать число!");
+                }
+
+                x = double.Parse(TBX.Text);
+                y = double.Parse(TBY.Text);
+                z = double.Parse(TBZ.Text);
+
+                if (x < -1 || x > 1)
+                {
+                    throw new ArgumentException("Согласно области значений вашей функции X должен быть в диапозоне [-1, 1]");
+                }
+
+
+                double absXY = Math.Abs(x - y);
+
+                double numerator = x + 3 * absXY + x * x;
+
+                double denominator = absXY * z + x * x;
+
+                if (Math.Abs(denominator) < 1e-10)
+                {
+                    throw new ArgumentException("Знаменатель не может быть равен нулю");
+                }
+
+                double gamma = 5 * Math.Atan(x) - 0.25 * Math.Acos(x) * (numerator / denominator);
+
+                TBResult.Text = gamma.ToString();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
                 return;
             }
-
-            TBX.Text = TBX.Text.Replace('.', ',');
-
-            if (!double.TryParse(TBX.Text, out x))
+            catch (FormatException ex)
             {
-                MessageBox.Show("Поле X должно содержать число!");
-                TBX.Focus();
+                MessageBox.Show(ex.Message);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(TBY.Text))
+            catch (Exception ex)
             {
-                MessageBox.Show("Заполните поле Y!");
-                TBY.Focus();
+                MessageBox.Show(ex.Message);
                 return;
             }
-
-            TBX.Text = TBX.Text.Replace('.', ',');
-
-
-            if (!double.TryParse(TBY.Text, out y))
-            {
-                MessageBox.Show("Поле Y должно содержать число!");
-                TBY.Focus();
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(TBZ.Text))
-            {
-                MessageBox.Show("Заполните поле Z!");
-                TBZ.Focus();
-                return;
-            }
-
-            TBX.Text = TBX.Text.Replace('.', ',');
-
-            if (!double.TryParse(TBZ.Text, out z))
-            {
-                MessageBox.Show("Поле Z должно содержать число!");
-                TBZ.Focus();
-                return;
-            }
-
-            x = double.Parse(TBX.Text);
-            y = double.Parse(TBY.Text);
-            z = double.Parse(TBZ.Text);
-
-            if (x < -1 || x > 1)
-            {
-                MessageBox.Show("Согласно области значений вашей функции X должен быть в диапозоне [-1, 1]");
-            }
-
-
-            double absXY = Math.Abs(x - y);
-
-            double numerator = x + 3 * absXY + x * x;
-
-            double denominator = absXY * z + x * x;
-
-            if (Math.Abs(denominator) < 1e-10)
-            {
-                MessageBox.Show("Знаменатель не может быть равен нулю");
-            }
-
-            double gamma = 5 * Math.Atan(x) - 0.25 * Math.Acos(x) * (numerator / denominator);
-
-            TBResult.Text = gamma.ToString();
         }
     }
 }

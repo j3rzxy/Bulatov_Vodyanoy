@@ -118,5 +118,8 @@
   <ItemGroup>
     <Resource Include="Аннотация 2026-02-24 094352.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="chrome_SBXHX5zRgX.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

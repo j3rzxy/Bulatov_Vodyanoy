@@ -9,16 +9,17 @@
       Title="Func2">
 
     <Grid Background="White">
-        <Image Margin="131,103,195,242" Source="/Аннотация 2026-02-24 094352.png" Stretch="Fill"/>
         <TextBox x:Name="TBX" ToolTip="Введите переменную x" HorizontalAlignment="Left" Margin="284,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
-        <TextBox x:Name="TBY" ToolTip="Введите переменную y" HorizontalAlignment="Left" Margin="284,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
-        <TextBox x:Name="TBZ" ToolTip="Введите переменную z" HorizontalAlignment="Left" Margin="284,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
-        <TextBox x:Name="TBResult" ToolTip="Результат вычислений" HorizontalAlignment="Left" Margin="284,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" IsReadOnly="True"/>
+        <TextBox x:Name="TBB" ToolTip="Введите переменную b" HorizontalAlignment="Left" Margin="284,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="TBResult" ToolTip="Результат вычислений" HorizontalAlignment="Left" Margin="281,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" IsReadOnly="True"/>
         <Label Content="x" HorizontalAlignment="Left" Margin="263,213,0,0" VerticalAlignment="Top"/>
-        <Label Content="y" HorizontalAlignment="Left" Margin="263,236,0,0" VerticalAlignment="Top"/>
-        <Label Content="z" HorizontalAlignment="Left" Margin="263,259,0,0" VerticalAlignment="Top"/>
-        <Label Content="Ответ:" HorizontalAlignment="Left" Margin="237,280,0,0" VerticalAlignment="Top" Height="30"/>
-        <Button Content="Очистить" ToolTip="Очистить текстовые поля с данными" HorizontalAlignment="Left" Margin="393,282,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Clear_Click"/>
-        <Button Content="Вычислить" ToolTip="Вычислить выражение на основе введеных параметров" HorizontalAlignment="Left" Margin="393,213,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Count_Click"/>
+        <Label Content="b" HorizontalAlignment="Left" Margin="263,236,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ответ:" HorizontalAlignment="Left" Margin="237,319,0,0" VerticalAlignment="Top" Height="30"/>
+        <Button Content="Очистить" ToolTip="Очистить текстовые поля с данными" HorizontalAlignment="Left" Margin="385,299,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Clear_Click"/>
+        <Button Content="Вычислить" ToolTip="Вычислить выражение на основе введеных параметров" HorizontalAlignment="Left" Margin="385,268,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Count_Click"/>
+        <Image Margin="181,104,263,242" Source="/chrome_SBXHX5zRgX.png" Stretch="Fill"/>
+        <RadioButton FontStyle="Italic" Content="sh(x)" HorizontalAlignment="Left" Margin="284,269,0,0" VerticalAlignment="Top" x:Name="RadioSinh"/>
+        <RadioButton FontStyle="Italic" Content="x^2" HorizontalAlignment="Left" Margin="284,287,0,0" VerticalAlignment="Top" x:Name="RadioSquare"/>
+        <RadioButton FontStyle="Italic" Content="e^x" HorizontalAlignment="Left" Margin="284,305,0,0" VerticalAlignment="Top" x:Name="RadioExp"/>
     </Grid>
 </Page>
