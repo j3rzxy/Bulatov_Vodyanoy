@@ -10,6 +10,7 @@
 3ИСИП-223
 
 Вариант 7
+<br>
 <img width="470" height="75" alt="image" src="https://github.com/user-attachments/assets/166b8567-422c-43bc-812e-47dd6be83dde" />
 <br>
 <img width="374" height="115" alt="image" src="https://github.com/user-attachments/assets/3d22cd60-bfc2-4c2b-93e4-513e971bddc9" />
