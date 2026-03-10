@@ -25,6 +25,7 @@
 <img width="276" height="64" alt="image" src="https://github.com/user-attachments/assets/f4928895-14ec-4606-aa5d-990531769793" />
 <br>
 
+
 Используемый стек технологий:
 WPF C# NET. Framework
 
