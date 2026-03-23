@@ -128,18 +128,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Аннотация 2026-02-24 094352.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="chrome_SBXHX5zRgX.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Image1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\chrome_SBXHX5zRgX.png" />
+    <Resource Include="Resources\Image1.png" />
+    <Resource Include="Resources\Аннотация 2026-02-24 094352.png" />
     <Content Include="System.Windows.Controls.DataVisualization.Toolkit.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

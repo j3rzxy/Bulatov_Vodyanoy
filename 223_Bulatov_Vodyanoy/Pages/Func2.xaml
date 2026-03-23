@@ -17,7 +17,7 @@
         <Label Content="Ответ&#xD;&#xA;" HorizontalAlignment="Left" Margin="237,319,0,0" VerticalAlignment="Top" Height="30"/>
         <Button Content="Очистить" ToolTip="Очистить все текстовые поля с данными" HorizontalAlignment="Left" Margin="385,299,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Clear_Click"/>
         <Button Content="Вычислить" ToolTip="Вычислить выражение на основе введеных параметров" HorizontalAlignment="Left" Margin="385,268,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Count_Click"/>
-        <Image Margin="181,104,263,242" Source="/chrome_SBXHX5zRgX.png" Stretch="Fill"/>
+        <Image Source="/Resources/chrome_SBXHX5zRgX.png" Margin="224,90,268,242" />
         <RadioButton ToolTip="Выбор функции гиперболический синус" FontStyle="Italic" Content="sh(x)" HorizontalAlignment="Left" Margin="284,269,0,0" VerticalAlignment="Top" x:Name="RadioSinh"/>
         <RadioButton ToolTip="Выбор функции x^2" FontStyle="Italic" Content="x^2" HorizontalAlignment="Left" Margin="284,287,0,0" VerticalAlignment="Top" x:Name="RadioSquare"/>
         <RadioButton ToolTip="Выбор функции e^x" FontStyle="Italic" Content="e^x" HorizontalAlignment="Left" Margin="284,305,0,0" VerticalAlignment="Top" x:Name="RadioExp"/>

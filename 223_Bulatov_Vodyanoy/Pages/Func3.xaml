@@ -24,7 +24,7 @@
         <Label Content="Ответ" HorizontalAlignment="Left" Margin="268,276,0,0" VerticalAlignment="Top" Height="30"/>
         <Button Content="Очистить" ToolTip="Очистить все текстовые поля с данными" HorizontalAlignment="Left" Margin="310,406,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Clear_Click"/>
         <Button Content="Вычислить" ToolTip="Вычислить выражение на основе введеных параметров" HorizontalAlignment="Left" Margin="310,375,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Count_Click"/>
-        <Image Margin="297,84,226,310" Source="/Image1.png" Stretch="Fill"/>
+        <Image Source="/Resources/Image1.png" Margin="243,95,301,303" />
         <WindowsFormsHost Height="300" Width="300" ToolTip="Визуализация функции" VerticalAlignment="Top" Margin="400,156,70,0">
             <charts:Chart x:Name="chrt_main">
                 <charts:Chart.Legends>

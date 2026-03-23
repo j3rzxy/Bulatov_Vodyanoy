@@ -9,7 +9,7 @@
       Title="Func1">
 
     <Grid Background="White">
-        <Image Margin="131,103,195,242" Source="/Аннотация 2026-02-24 094352.png" Stretch="Fill"/>
+        <Image Source="/Resources/Аннотация 2026-02-24 094352.png" Margin="175,115,238,259" />
         <TextBox x:Name="TBX" ToolTip="Введите переменную x" HorizontalAlignment="Left" Margin="284,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
         <TextBox x:Name="TBY" ToolTip="Введите переменную y" HorizontalAlignment="Left" Margin="284,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
         <TextBox x:Name="TBZ" ToolTip="Введите переменную z" HorizontalAlignment="Left" Margin="284,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
