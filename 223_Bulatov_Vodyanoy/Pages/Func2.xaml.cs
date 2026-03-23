@@ -25,46 +25,65 @@ namespace _223_Bulatov_Vodyanoy
             InitializeComponent();
         }
 
-        private double CalculateF(double x)
+
+        private bool F2Calculate(double x, double b, out double result, out string selectedFunction)
         {
-            if (RadioSinh.IsChecked == true)
-                return Math.Sinh(x);  // sh(x)
-            else if (RadioSquare.IsChecked == true)
-                return x * x;          // x^2
-            else if (RadioExp.IsChecked == true)
-                return Math.Exp(x);    // e^x
-            else
-                throw new InvalidOperationException("Выберите функцию f(x)");
-        }
+            result = 0;
+            selectedFunction = null;
 
-        private double CalculateS(double x, double b)
-        {
-            // Вычисляем f(x)
-            double fx = CalculateF(x);
-
-            // Вычисляем xb (произведение x и b)
-            double xb = x * b;
-
-            double s;
-
-            // Проверяем условия
-            if (xb > 1 && xb < 10)
+            try
             {
-                // s = e^f
-                s = Math.Exp(fx);
-            }
-            else if (xb > 12 && xb < 40)
-            {
-                // s = √|f(x) + 4*b|
-                s = Math.Sqrt(Math.Abs(fx + 4 * b));
-            }
-            else
-            {
-                // s = b*f(x)²
-                s = b * fx * fx;
-            }
+                // Вычисляем f(x)
+                double fx;
 
-            return s;
+                if (RadioSinh?.IsChecked == true)
+                {
+                    fx = Math.Sinh(x);
+                    selectedFunction = "sh(x)";
+                }
+                else if (RadioSquare?.IsChecked == true)
+                {
+                    fx = x * x;
+                    selectedFunction = "x^2";
+                }
+                else if (RadioExp?.IsChecked == true)
+                {
+                    fx = Math.Exp(x);
+                    selectedFunction = "e^x";
+                }
+                else
+                {
+                    return false; // Функция не выбрана
+                }
+
+                // Вычисляем xb (произведение x и b)
+                double xb = x * b;
+
+                // Проверяем условия
+                if (xb > 1 && xb < 10)
+                {
+                    // s = e^f
+                    result = Math.Exp(fx);
+                }
+                else if (xb > 12 && xb < 40)
+                {
+                    // s = √|f(x) + 4*b|
+                    double underRoot = Math.Abs(fx + 4 * b);
+                    result = Math.Sqrt(underRoot);
+                }
+                else
+                {
+                    // s = b*f(x)²
+                    result = b * fx * fx;
+                }
+
+                return true;
+            }
+            catch
+            {
+                // Любое исключение при вычислении = ошибка
+                return false;
+            }
         }
 
         private void Count_Click(object sender, RoutedEventArgs e)
@@ -103,12 +122,15 @@ namespace _223_Bulatov_Vodyanoy
                     throw new FormatException("Поле B должно содержать число!");
                 }
 
-                double s = CalculateS(x, b);
+                if (!F2Calculate(x, b, out double s, out string funcName))
+                {
+                    throw new InvalidOperationException(
+                        string.IsNullOrEmpty(funcName)
+                            ? "Выберите функцию f(x)!"
+                            : $"Ошибка вычисления для {funcName}");
+                }
 
                 double xb = x * b;
-                string funcName = RadioSinh.IsChecked.Value ? "sh(x)" :
-                                 RadioSquare.IsChecked.Value ? "x^2" : "e^x";
-
                 TBResult.Text = s.ToString();
 
             }
