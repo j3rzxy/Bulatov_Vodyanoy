@@ -136,5 +136,11 @@
     <Resource Include="Resources\Аннотация 2026-02-24 094352.png" />
     <Content Include="System.Windows.Controls.DataVisualization.Toolkit.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UnitTestProject\UnitTestProject.csproj">
+      <Project>{8a25c590-62a5-4e7e-baa0-36954b9a6176}</Project>
+      <Name>UnitTestProject</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

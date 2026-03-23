@@ -22,6 +22,23 @@ namespace _223_Bulatov_Vodyanoy.Pages
             chrt_main.Series.Add(currentSeries);
         }
 
+        private bool F3Calculate(double x, double b, out double result, out string error)
+        {
+            result = 0;
+            error = null;
+
+            double underRoot = Math.Pow(x, 3) + Math.Pow(b, 3);
+
+            if (underRoot < 0)
+            {
+                error = $"При x = {x} выражение под корнем отрицательное ({underRoot})";
+                return false;
+            }
+
+            result = Math.Round(9 * (x + 15 * Math.Sqrt(underRoot)), 3);
+            return true;
+        }
+
         private void Count_Click(object sender, RoutedEventArgs e)
         {
             Series currentSeries = chrt_main.Series.FirstOrDefault();
@@ -34,26 +51,27 @@ namespace _223_Bulatov_Vodyanoy.Pages
                 double x0 = Convert.ToDouble(TBX0.Text);
                 double xk = Convert.ToDouble(TBXk.Text);
                 double dx = Convert.ToDouble(TBdX.Text);
+
                 if (xk < x0 || dx <= 0 || (dx > (xk - x0)))
                 {
                     MessageBox.Show("Некорректные значения диапазона и/или шага вычислений.\n Xk должно быть больше X0, \nDX должно быть больше 0, \nРазность Xk и X0 должна быть больше Dx.");
                     return;
                 }
+
                 TBResult.Clear();
-                double y;
-                for (double с = x0; x <= xk; x += dx)
+
+                for (double currentX = x0; currentX <= xk; currentX += dx)
                 {
-                    // Проверка, чтобы под корнем не было отрицательного числа
-                    double underRoot = Math.Pow(x, 3) + Math.Pow(b, 3);
-                    if (underRoot < 0)
+                    if (F3Calculate(currentX, b, out double y, out string error))
                     {
-                        MessageBox.Show($"При x = {x} выражение под корнем отрицательное ({underRoot}). Вычисления прекращены.");
+                        currentSeries.Points.AddXY(currentX, y);
+                        TBResult.Text += $"{currentX}: {y}\n";
+                    }
+                    else
+                    {
+                        MessageBox.Show($"{error}. Вычисления прекращены.");
                         break;
                     }
-
-                    y = Math.Round(9 * (x + 15 * Math.Sqrt(underRoot)), 3);
-                    currentSeries.Points.AddXY(x, y);
-                    TBResult.Text += $"{x}: {y}\n";
                 }
             }
             catch (Exception)

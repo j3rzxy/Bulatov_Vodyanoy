@@ -81,26 +81,9 @@ namespace _223_Bulatov_Vodyanoy.Pages
                 y = double.Parse(TBY.Text);
                 z = double.Parse(TBZ.Text);
 
-                if (x < -1 || x > 1)
-                {
-                    throw new ArgumentException("Согласно области значений вашей функции X должен быть в диапозоне [-1, 1]");
-                }
+                double result = F1Calculate(x, y, z);
 
-
-                double absXY = Math.Abs(x - y);
-
-                double numerator = x + 3 * absXY + x * x;
-
-                double denominator = absXY * z + x * x;
-
-                if (Math.Abs(denominator) < 1e-10)
-                {
-                    throw new ArgumentException("Знаменатель не может быть равен нулю");
-                }
-
-                double gamma = 5 * Math.Atan(x) - 0.25 * Math.Acos(x) * (numerator / denominator);
-
-                TBResult.Text = gamma.ToString();
+                TBResult.Text = result.ToString();
             }
             catch (ArgumentException ex)
             {
@@ -117,6 +100,27 @@ namespace _223_Bulatov_Vodyanoy.Pages
                 MessageBox.Show(ex.Message);
                 return;
             }
+        }
+        public double F1Calculate(double x, double y, double z)
+        {
+            if (x < -1 || x > 1)
+            {
+                throw new ArgumentException("Согласно области значений вашей функции X должен быть в диапозоне [-1, 1]");
+            }
+
+
+            double absXY = Math.Abs(x - y);
+
+            double numerator = x + 3 * absXY + x * x;
+
+            double denominator = absXY * z + x * x;
+
+            if (Math.Abs(denominator) < 1e-10)
+            {
+                throw new ArgumentException("Знаменатель не может быть равен нулю");
+            }
+
+            return 5 * Math.Atan(x) - 0.25 * Math.Acos(x) * (numerator / denominator);
         }
     }
 }
