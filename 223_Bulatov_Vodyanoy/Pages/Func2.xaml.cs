@@ -24,7 +24,11 @@ namespace _223_Bulatov_Vodyanoy
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Метод, вызываемый при нажатии на кнопку "Вычислить"
+        /// </summary>
+        /// <param name="sender">Базовый параметр</param>
+        /// <param name="e">Базовый параметр</param>
         private void Count_Click(object sender, RoutedEventArgs e)
         {
             TBResult.Clear();
@@ -107,12 +111,24 @@ namespace _223_Bulatov_Vodyanoy
                 return;
             }
         }
-
+        /// <summary>
+        /// Статический класс для отдельных функций.
+        /// </summary>
         public static class Functions2
         {
-            // Перечисление для выбора функции (удобнее, чем строки)
+            /// <summary>
+            /// Перечисление для выбора функции.
+            /// </summary>
             public enum FunctionType { Sinh, Square, Exp }
-
+            /// <summary>
+            /// Метод расчета заданной функции.
+            /// </summary>
+            /// <param name="x">Переменная x</param>
+            /// <param name="b">Переменная b</param>
+            /// <param name="funcType">Переменная, передающая варианты функций из перечисления</param>
+            /// <param name="result">Результат вычислений</param>
+            /// <param name="selectedFunction">Параметр, хранящий выбранную функцию для расчета</param>
+            /// <returns></returns>
             public static bool F2Calculate(double x, double b, FunctionType funcType, out double result, out string selectedFunction)
             {
                 result = 0;
@@ -167,7 +183,11 @@ namespace _223_Bulatov_Vodyanoy
                 }
             }
         }
-
+        /// <summary>
+        /// Метод для очистки текстовых полей.
+        /// </summary>
+        /// <param name="sender">Базовый параметр</param>
+        /// <param name="e">Базовый параметр</param>
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             TBX.Clear();

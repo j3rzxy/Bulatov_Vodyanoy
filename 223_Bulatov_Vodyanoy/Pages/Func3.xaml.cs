@@ -9,6 +9,9 @@ using System.Linq;
 
 namespace _223_Bulatov_Vodyanoy.Pages
 {
+    /// <summary>
+    /// Логика взаимодействия для Func3.xaml
+    /// </summary>
     public partial class Func3 : Page
     {
         public Func3()
@@ -21,7 +24,11 @@ namespace _223_Bulatov_Vodyanoy.Pages
             };
             chrt_main.Series.Add(currentSeries);
         }
-
+        /// <summary>
+        /// Метод, вызываемый при нажатии на кнопку "Вычислить"
+        /// </summary>
+        /// <param name="sender">Базовый параметр</param>
+        /// <param name="e">Базовый параметр</param>
         private void Count_Click(object sender, RoutedEventArgs e)
         {
             Series currentSeries = chrt_main.Series.FirstOrDefault();
@@ -62,7 +69,11 @@ namespace _223_Bulatov_Vodyanoy.Pages
                 MessageBox.Show("Ошибка при вычислении. Проверьте корректность параметров.");
             }
         }
-
+        /// <summary>
+        /// Метод для очистки текстовых полей.
+        /// </summary>
+        /// <param name="sender">Базовый параметр</param>
+        /// <param name="e">Базовый параметр</param>
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             TBX.Clear();
@@ -76,9 +87,19 @@ namespace _223_Bulatov_Vodyanoy.Pages
             TBX.Focus();
         }
     }
-
+    /// <summary>
+    /// Статический класс для отдельных функций.
+    /// </summary>
     public static class Functions3
     {
+        /// <summary>
+        /// Метод расчета заданной функции и построения по ней графика.
+        /// </summary>
+        /// <param name="x">Переменная x</param>
+        /// <param name="b">Переменная b</param>
+        /// <param name="result">Результат вычислений</param>
+        /// <param name="error">Нулевая переменная для вывода ошибки</param>
+        /// <returns></returns>
         public static bool F3Calculate(double x, double b, out double result, out string error)
         {
             result = 0;

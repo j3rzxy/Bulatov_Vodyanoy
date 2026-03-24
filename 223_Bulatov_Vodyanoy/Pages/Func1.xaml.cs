@@ -24,6 +24,11 @@ namespace _223_Bulatov_Vodyanoy.Pages
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// Метод для очистки текстовых полей.
+        /// </summary>
+        /// <param name="sender">Базовый параметр</param>
+        /// <param name="e">Базовый параметр</param>
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             TBX.Clear();
@@ -32,7 +37,11 @@ namespace _223_Bulatov_Vodyanoy.Pages
             TBResult.Clear();
             TBX.Focus();
         }
-
+        /// <summary>
+        /// Метод, вызываемый при нажатии на кнопку "Вычислить"
+        /// </summary>
+        /// <param name="sender">Базовый параметр</param>
+        /// <param name="e">Базовый параметр</param>
         private void Count_Click(object sender, RoutedEventArgs e)
         {
             double x, y, z;
@@ -101,8 +110,19 @@ namespace _223_Bulatov_Vodyanoy.Pages
             }
         }
     }
+    /// <summary>
+    /// Статический класс для отдельных функций.
+    /// </summary>
     public static class Functions
     {
+        /// <summary>
+        /// Метод расчета заданной функции.
+        /// </summary>
+        /// <param name="x">Переменная x</param>
+        /// <param name="y">Переменная y</param>
+        /// <param name="z">Переменная z</param>
+        /// <param name="result">Результат вычисления</param>
+        /// <returns></returns>
         public static bool F1Calculate(double x, double y, double z, out double result)
         {
 
