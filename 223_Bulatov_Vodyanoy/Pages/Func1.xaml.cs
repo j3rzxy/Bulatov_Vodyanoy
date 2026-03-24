@@ -76,7 +76,7 @@ namespace _223_Bulatov_Vodyanoy.Pages
 
                 // === Вычисление ===
                 double result;
-                if (F1Calculate(x, y, z, out result))
+                if (Functions.F1Calculate(x, y, z, out result))
                 {
                     TBResult.Text = result.ToString(); 
                 }
@@ -100,8 +100,10 @@ namespace _223_Bulatov_Vodyanoy.Pages
                                MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        public bool F1Calculate(double x, double y, double z, out double result)
+    }
+    public static class Functions
+    {
+        public static bool F1Calculate(double x, double y, double z, out double result)
         {
 
             try
