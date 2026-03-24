@@ -35,4 +35,5 @@ WPF C# NET. Framework
 <br>
 Результаты тестов:
 <br>
+<br>
 <img width="808" height="272" alt="devenv_C5WuOXFWQP" src="https://github.com/user-attachments/assets/fbcadb27-c87d-4e35-86af-32af1891ddbf" />
