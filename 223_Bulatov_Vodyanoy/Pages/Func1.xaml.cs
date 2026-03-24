@@ -35,92 +35,99 @@ namespace _223_Bulatov_Vodyanoy.Pages
 
         private void Count_Click(object sender, RoutedEventArgs e)
         {
-
             double x, y, z;
 
             try
             {
                 TBResult.Clear();
 
+                // === Валидация X ===
                 if (string.IsNullOrWhiteSpace(TBX.Text))
                 {
                     throw new ArgumentException("Заполните поле X!");
                 }
-
-                TBX.Text = TBX.Text.Replace('.', ',');
-
-                if (!double.TryParse(TBX.Text, out x))
+                string xText = TBX.Text.Replace('.', ',');
+                if (!double.TryParse(xText, out x))
                 {
                     throw new FormatException("Поле X должно содержать число!");
                 }
+
+                // === Валидация Y ===
                 if (string.IsNullOrWhiteSpace(TBY.Text))
                 {
                     throw new ArgumentException("Заполните поле Y!");
                 }
-
-                TBX.Text = TBX.Text.Replace('.', ',');
-
-
-                if (!double.TryParse(TBY.Text, out y))
+                string yText = TBY.Text.Replace('.', ','); 
+                if (!double.TryParse(yText, out y))
                 {
                     throw new FormatException("Поле Y должно содержать число!");
                 }
+
+                // === Валидация Z ===
                 if (string.IsNullOrWhiteSpace(TBZ.Text))
                 {
                     throw new ArgumentException("Заполните поле Z!");
                 }
-
-                TBX.Text = TBX.Text.Replace('.', ',');
-
-                if (!double.TryParse(TBZ.Text, out z))
+                string zText = TBZ.Text.Replace('.', ','); 
+                if (!double.TryParse(zText, out z))
                 {
                     throw new FormatException("Поле Z должно содержать число!");
                 }
 
-                x = double.Parse(TBX.Text);
-                y = double.Parse(TBY.Text);
-                z = double.Parse(TBZ.Text);
-
-                double result = F1Calculate(x, y, z);
-
-                TBResult.Text = result.ToString();
+                // === Вычисление ===
+                double result;
+                if (F1Calculate(x, y, z, out result))
+                {
+                    TBResult.Text = result.ToString(); 
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка вычисления функции. Проверьте входные данные.",
+                                  "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message);
-                return;
+                MessageBox.Show(ex.Message, "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             catch (FormatException ex)
             {
-                MessageBox.Show(ex.Message);
-                return;
+                MessageBox.Show(ex.Message, "Ошибка формата", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                return;
+                MessageBox.Show($"Непредвиденная ошибка: {ex.Message}", "Ошибка",
+                               MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        public double F1Calculate(double x, double y, double z)
+
+        public bool F1Calculate(double x, double y, double z, out double result)
         {
-            if (x < -1 || x > 1)
+
+            try
             {
-                throw new ArgumentException("Согласно области значений вашей функции X должен быть в диапозоне [-1, 1]");
+                if (x < -1 || x > 1)
+                {
+                    throw new ArgumentException("Согласно области значений вашей функции X должен быть в диапазоне [-1, 1]");
+                }
+
+                double absXY = Math.Abs(x - y);
+                double numerator = x + 3 * absXY + x * x;
+                double denominator = absXY * z + x * x;
+
+                if (Math.Abs(denominator) < 1e-10)
+                {
+                    throw new ArgumentException("Знаменатель не может быть равен нулю");
+                }
+
+                result = 5 * Math.Atan(x) - 0.25 * Math.Acos(x) * (numerator / denominator);
+                return true;
             }
-
-
-            double absXY = Math.Abs(x - y);
-
-            double numerator = x + 3 * absXY + x * x;
-
-            double denominator = absXY * z + x * x;
-
-            if (Math.Abs(denominator) < 1e-10)
+            catch
             {
-                throw new ArgumentException("Знаменатель не может быть равен нулю");
+                result = 0;
+                return false;
             }
-
-            return 5 * Math.Atan(x) - 0.25 * Math.Acos(x) * (numerator / denominator);
         }
     }
 }
