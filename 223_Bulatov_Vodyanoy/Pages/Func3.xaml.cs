@@ -22,23 +22,6 @@ namespace _223_Bulatov_Vodyanoy.Pages
             chrt_main.Series.Add(currentSeries);
         }
 
-        private bool F3Calculate(double x, double b, out double result, out string error)
-        {
-            result = 0;
-            error = null;
-
-            double underRoot = Math.Pow(x, 3) + Math.Pow(b, 3);
-
-            if (underRoot < 0)
-            {
-                error = $"При x = {x} выражение под корнем отрицательное ({underRoot})";
-                return false;
-            }
-
-            result = Math.Round(9 * (x + 15 * Math.Sqrt(underRoot)), 3);
-            return true;
-        }
-
         private void Count_Click(object sender, RoutedEventArgs e)
         {
             Series currentSeries = chrt_main.Series.FirstOrDefault();
@@ -62,7 +45,7 @@ namespace _223_Bulatov_Vodyanoy.Pages
 
                 for (double currentX = x0; currentX <= xk; currentX += dx)
                 {
-                    if (F3Calculate(currentX, b, out double y, out string error))
+                    if (Functions3.F3Calculate(currentX, b, out double y, out string error))
                     {
                         currentSeries.Points.AddXY(currentX, y);
                         TBResult.Text += $"{currentX}: {y}\n";
@@ -91,6 +74,26 @@ namespace _223_Bulatov_Vodyanoy.Pages
             Series currentSeries = chrt_main.Series.FirstOrDefault();
             currentSeries.Points.Clear();
             TBX.Focus();
+        }
+    }
+
+    public static class Functions3
+    {
+        public static bool F3Calculate(double x, double b, out double result, out string error)
+        {
+            result = 0;
+            error = null;
+
+            double underRoot = Math.Pow(x, 3) + Math.Pow(b, 3);
+
+            if (underRoot < 0)
+            {
+                error = $"При x = {x} выражение под корнем отрицательное ({underRoot})";
+                return false;
+            }
+
+            result = Math.Round(9 * (x + 15 * Math.Sqrt(underRoot)), 3);
+            return true;
         }
     }
 }

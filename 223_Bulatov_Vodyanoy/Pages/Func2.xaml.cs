@@ -25,67 +25,6 @@ namespace _223_Bulatov_Vodyanoy
             InitializeComponent();
         }
 
-
-        private bool F2Calculate(double x, double b, out double result, out string selectedFunction)
-        {
-            result = 0;
-            selectedFunction = null;
-
-            try
-            {
-                // Вычисляем f(x)
-                double fx;
-
-                if (RadioSinh?.IsChecked == true)
-                {
-                    fx = Math.Sinh(x);
-                    selectedFunction = "sh(x)";
-                }
-                else if (RadioSquare?.IsChecked == true)
-                {
-                    fx = x * x;
-                    selectedFunction = "x^2";
-                }
-                else if (RadioExp?.IsChecked == true)
-                {
-                    fx = Math.Exp(x);
-                    selectedFunction = "e^x";
-                }
-                else
-                {
-                    return false; // Функция не выбрана
-                }
-
-                // Вычисляем xb (произведение x и b)
-                double xb = x * b;
-
-                // Проверяем условия
-                if (xb > 1 && xb < 10)
-                {
-                    // s = e^f
-                    result = Math.Exp(fx);
-                }
-                else if (xb > 12 && xb < 40)
-                {
-                    // s = √|f(x) + 4*b|
-                    double underRoot = Math.Abs(fx + 4 * b);
-                    result = Math.Sqrt(underRoot);
-                }
-                else
-                {
-                    // s = b*f(x)²
-                    result = b * fx * fx;
-                }
-
-                return true;
-            }
-            catch
-            {
-                // Любое исключение при вычислении = ошибка
-                return false;
-            }
-        }
-
         private void Count_Click(object sender, RoutedEventArgs e)
         {
             TBResult.Clear();
@@ -122,16 +61,29 @@ namespace _223_Bulatov_Vodyanoy
                     throw new FormatException("Поле B должно содержать число!");
                 }
 
-                if (!F2Calculate(x, b, out double s, out string funcName))
+                Functions2.FunctionType selectedType;
+                if (RadioSinh.IsChecked == true)
+                    selectedType = Functions2.FunctionType.Sinh;
+                else if (RadioSquare.IsChecked == true)
+                    selectedType = Functions2.FunctionType.Square;
+                else if (RadioExp.IsChecked == true)
+                    selectedType = Functions2.FunctionType.Exp;
+                else
                 {
-                    throw new InvalidOperationException(
-                        string.IsNullOrEmpty(funcName)
-                            ? "Выберите функцию f(x)!"
-                            : $"Ошибка вычисления для {funcName}");
+                    MessageBox.Show("Выберите функцию!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
                 }
 
-                double xb = x * b;
-                TBResult.Text = s.ToString();
+                double result;
+                string funcName;
+                if (Functions2.F2Calculate(x, b, selectedType, out result, out funcName))
+                {
+                    TBResult.Text = result.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка вычисления.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
 
             }
             catch (ArgumentException ex)
@@ -153,6 +105,66 @@ namespace _223_Bulatov_Vodyanoy
             {
                 MessageBox.Show(ex.Message);
                 return;
+            }
+        }
+
+        public static class Functions2
+        {
+            // Перечисление для выбора функции (удобнее, чем строки)
+            public enum FunctionType { Sinh, Square, Exp }
+
+            public static bool F2Calculate(double x, double b, FunctionType funcType, out double result, out string selectedFunction)
+            {
+                result = 0;
+                selectedFunction = null;
+
+                try
+                {
+                    // 1. Вычисляем f(x) в зависимости от типа функции
+                    double fx;
+                    if (funcType == FunctionType.Sinh)
+                    {
+                        fx = Math.Sinh(x);
+                        selectedFunction = "sh(x)";
+                    }
+                    else if (funcType == FunctionType.Square)
+                    {
+                        fx = x * x;
+                        selectedFunction = "x^2";
+                    }
+                    else if (funcType == FunctionType.Exp)
+                    {
+                        fx = Math.Exp(x);
+                        selectedFunction = "e^x";
+                    }
+                    else
+                    {
+                        return false; // Неизвестная функция
+                    }
+
+                    // 2. Вычисляем произведение
+                    double xb = x * b;
+
+                    // 3. Выбираем формулу результата
+                    if (xb > 1 && xb < 10)
+                    {
+                        result = Math.Exp(fx);           // s = e^f
+                    }
+                    else if (xb > 12 && xb < 40)
+                    {
+                        result = Math.Sqrt(Math.Abs(fx + 4 * b)); // s = √|f+4b|
+                    }
+                    else
+                    {
+                        result = b * fx * fx;            // s = b*f²
+                    }
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
         }
 
