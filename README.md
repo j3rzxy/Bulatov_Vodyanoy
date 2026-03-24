@@ -30,3 +30,8 @@
 WPF C# NET. Framework
 
 Приложение состоит из главного окна и 3 страниц, смена которых регулируется кнопками по выбору пользователя.
+
+Проведено тестирование программы с использованием средств автоматизации Microsoft Visual Studio
+<br>
+Результаты тестов:
+<img width="808" height="272" alt="devenv_C5WuOXFWQP" src="https://github.com/user-attachments/assets/fbcadb27-c87d-4e35-86af-32af1891ddbf" />
